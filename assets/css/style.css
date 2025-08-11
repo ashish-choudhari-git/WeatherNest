@@ -1,6 +1,5 @@
-
 :root {
-  --primary: #B5A1E5; 
+--primary: #B5A1E5; 
 --on-primary: #100E17; 
 --background: #131214;
 --on-background: #EAE6F2;
@@ -128,7 +127,7 @@ body{
 
 
 ::selection{
-  background-color:var(--whitex-alpha-8);
+  background-color:var(--white-alpha-8);
 }
 
 ::-webkit-scrollbar{
@@ -167,7 +166,7 @@ body{
   font-feature-settings: 'liga'; 
   -webkit-font-feature-settings:'liga';
   -webkit-font-smoothing:antialiased; /*Makes text rendering softer and smoother (Mac focus) */
-   height:1em;
+  height:1em;
   width:1em;
   overflow:hidden;  
 
@@ -304,9 +303,9 @@ border-radius: var(--radius-circle);
 
 
   /* HEADER */
- .header .btn-primary .span{display:none;} 
+ .header .btn-primary .span{display:none;} /*Current location text will be hidden in header */
 
-.logo img{width:150px;}
+.logo img{width:180px;}
 
 .header .container,.header-actions {
   display:flex;
@@ -420,7 +419,7 @@ main{
 article.container{
   position: relative;
   display:grid;
-  grid-template-columns: minmax(0,1fr);
+  grid-template-columns: minmax(0,1fr); 
   gap:20px;
   height:100%;
   overflow-y: auto; /* for firefox*/
@@ -449,7 +448,7 @@ article.container::before{
   pointer-events: none;
   z-index: 1;
 }
-
+/* good way of listing items */
 .section:not(:last-child){
   margin-block-end: 16px;
 }
@@ -499,6 +498,33 @@ article.container::before{
 /*-----------------------------------*\
   #HIGHLIGHTS
 \*-----------------------------------*/
+
+.forecast-card .title-2{
+  margin-block-end:0;
+}
+
+.forecast-card :is(.card-item, .icon-wrapper){
+  display : flex;
+  align-items: center;
+}
+
+.forecast-card .card-item:not(:last-child){
+  margin-block-end: 12px;
+}
+
+.forecast-card .icons-wrapper {
+  gap: 8px;
+}
+
+.forecast-card .label-1{
+  color: var(--on-surface-variant);
+  font-weight: var(--weight-semiBold);
+}
+
+.forecast-card .card-item > .label-1 {
+  width:100%;
+  text-align:right;
+}
 
 
 
