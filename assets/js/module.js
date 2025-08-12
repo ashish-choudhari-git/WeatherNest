@@ -26,7 +26,7 @@ export const monthNames =[
 ];
 
 /* date string. formate: sunday 10, jan */
-export const getDate= function(dataUnix, timezone){
+export const getDate= function(dateUnix, timezone){
     const date = new Date((dateUnix + timezone) * 1000);
     const weekDayName = weekDayNames[date.getUTCDay()];
     const monthName = monthNames[date.getUTCMonth()];
@@ -34,10 +34,10 @@ export const getDate= function(dataUnix, timezone){
     return `${weekDayName} ${date.getUTCDate()}, ${monthName}`;
 }
 
-export const getHours = function(timeUnix, timezone){
+export const getTime = function(timeUnix, timezone){
     const date = new Date((timeUnix + timezone) * 1000);
     const hours = date.getUTCHours();
-    // const minutes = date.getUTCMinutes();
+    const minutes = date.getUTCMinutes();
     const period =  hours >= 12 ? "PM" : "AM";
 
     return `${hours % 12 || 12}:${minutes} ${period}`
@@ -72,4 +72,11 @@ export const aqiText = {
         message : "Health warning of emergency conditions. The entire population is mmore likely to be affected"
     }
     
+}
+
+export const getHours = function(timeUnix, timezone){
+    const date = new Date((timeUnix + timezone) * 1000);
+    const hours = date.getUTCHours();
+    const period = hours >= 12 ? "PM" : "AM";
+    return `${hours % 12 || 12} ${period}`;
 }

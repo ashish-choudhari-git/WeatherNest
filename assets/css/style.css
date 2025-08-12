@@ -835,7 +835,9 @@ color: var(--on-bg-aqi-2);
     --title-2:2rem;
   }
 
-  .container{padding: 40px;}
+  .container{
+    padding: 10px 40px 40px;
+  }
 
   .card-lg{ padding: 36px;}
 
@@ -896,10 +898,9 @@ color: var(--on-bg-aqi-2);
   .search-view:focus-within .search-result.active {
     display: block;
   }
-
-  .search-view:has(.search-result.active):focus-within , .search-field{
-    border-bottom-left-radius: var(--radius-28);
-    border-top-left-radius: var(--radius-28);
+  .search-view:has(.search-result.active) .search-field { 
+    border-bottom-left-radius: 0; 
+    border-bottom-right-radius: 0; 
   }
 
   .search-view .view-list{
