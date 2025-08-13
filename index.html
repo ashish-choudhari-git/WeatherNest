@@ -8,13 +8,23 @@
     <title>WeatherNest</title>
     <meta name="title" content="WeatherNest">
     <meta name="description" content="WeatherNest is a weather web app">
-    <link rel="shortcut icon" href="./favicon.png" type="image/png">
+    <link rel="shortcut icon" href="./assets/images/Logo.svg" type="image/png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="./assets/css/style.css">
+        <link rel="stylesheet" href="./assets/css/style.css">
+        <script>
+            (function(){
+                try {
+                    var KEY = 'weathernest-theme';
+                    var stored = localStorage.getItem(KEY);
+                    var isLight = stored ? stored === 'light' : (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches);
+                    if (isLight) document.documentElement.classList.add('theme-light');
+                } catch (e) { /* no-op */ }
+            })();
+        </script>
     <script src="./assets/js/app.js" type="module"></script>
     <script src="./assets/js/route.js" type="module"></script>
     <script src="assets/js/config.js"></script>
@@ -25,7 +35,8 @@
     <header class="header">
         <div class="container ">
             <a href="#" class="logo">
-                <img src="./assets/images/Logo.svg" width="364" height="58" alt="logo">
+                <img class="logo-dark" src="./assets/images/Logo.svg" width="364" height="58" alt="WeatherNest logo (dark)">
+                <img class="logo-light" src="./assets/images/Logo.png" width="364" height="58" alt="WeatherNest logo (light)">
             </a>
 
             <div class="search-view" data-search-view>
@@ -66,7 +77,10 @@
                     <span class="m-icon">my_location</span>
                     <span class="span">Current Location</span>
                 </a>
-
+                
+                <button class="icon-btn has-state" aria-label="toggle theme" data-theme-toggle>
+                    <span class="m-icon" data-theme-icon>light_mode</span>
+                </button>
 
             </div>
         </div>
@@ -444,5 +458,23 @@
 
     </section>
 </body>
+
+<script>
+    window.addEventListener('DOMContentLoaded', function(){
+        var KEY = 'weathernest-theme';
+        var btn = document.querySelector('[data-theme-toggle]');
+        var icon = document.querySelector('[data-theme-icon]');
+        if(!btn || !icon) return;
+        var isLight = document.documentElement.classList.contains('theme-light');
+        icon.textContent = isLight ? 'dark_mode' : 'light_mode';
+        btn.setAttribute('aria-label', isLight ? 'switch to dark mode' : 'switch to light mode');
+        btn.addEventListener('click', function(){
+            var nowLight = document.documentElement.classList.toggle('theme-light');
+            try { localStorage.setItem(KEY, nowLight ? 'light' : 'dark'); } catch(e){}
+            icon.textContent = nowLight ? 'dark_mode' : 'light_mode';
+            btn.setAttribute('aria-label', nowLight ? 'switch to dark mode' : 'switch to light mode');
+        });
+    });
+    </script>
 
 </html>

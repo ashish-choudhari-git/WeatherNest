@@ -52,6 +52,25 @@
 --transition-short: 100ms ease;
 }
 
+/* Light theme overrides */
+.theme-light {
+  --primary: #3F51B5; /* Indigo 500 for good contrast on light */
+  --on-primary: #FFFFFF;
+  --background: #F7F7FB;
+  --on-background: #1C1B1F; /* near black text */
+  --surface: #FFFFFF;
+  --on-surface: #1C1B1F;
+  --on-surface-variant: #4A4A52; 
+  --on-surface-variant-2: #6E6E77;
+  --outline: #E6E6ED;
+  --white: hsl(0, 0%, 0%);
+  --white-alpha-4: rgba(0,0,0,0.05);
+  --white-alpha-8: rgba(0,0,0,0.10);
+  --black-alpha-10: rgba(0,0,0,0.06);
+  --gradient-1: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 65%, #FFFFFF 100%);
+  --gradient-2: linear-gradient(180deg, rgba(250,250,252,0) 0%, rgba(250,250,252,0.8) 65%, #FAFAFC 100%);
+}
+
 
 /*-----------------------------------*\
   #RESET
@@ -199,9 +218,7 @@ border-radius: var(--radius-circle);
   position : relative;
 }
 
-.has-state:hover{
-  background-color: var(--shadow-1);
-}
+.has-state:hover{ background-color: var(--white-alpha-8); }
 
 .has-state::before{
   content: '';
@@ -250,6 +267,7 @@ border-radius: var(--radius-circle);
 .card{
   background-color: var(--surface);
   color: var(--on-surface);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.06);
 }
 
 .card-lg{
@@ -262,7 +280,7 @@ border-radius: var(--radius-circle);
 }
 
 .heading{
-  color: var(--white);
+  color: var(--on-surface);
   font-size: var(--heading);
   line-height:1.1;
 }
@@ -306,6 +324,10 @@ border-radius: var(--radius-circle);
  .header .btn-primary .span{display:none;} /*Current location text will be hidden in header */
 
 .logo img{width:180px;}
+.logo .logo-light{ display:none; }
+.logo .logo-dark{ display:block; }
+.theme-light .logo .logo-light{ display:block; }
+.theme-light .logo .logo-dark{ display:none; }
 
 .header .container,.header-actions {
   display:flex;
@@ -550,7 +572,7 @@ article.container::before{
 }
 
 .highlights .card-sm{
-background-color: var(--black-alpha-10);
+background-color: var(--white-alpha-4);
 position: relative;
 }
 
@@ -849,7 +871,9 @@ color: var(--on-bg-aqi-2);
 
   /* header */
 
-  .header .icon-btn { display: none;}
+  /* Keep search icon hidden on desktop, but preserve theme toggle */
+  .header .icon-btn[data-search-toggler] { display: none;}
+  .header .icon-btn[data-theme-toggle] { display: grid; }
 
   .logo img{ width : 200px;}
   .header{
