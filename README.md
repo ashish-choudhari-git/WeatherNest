@@ -3,8 +3,10 @@
 A simple weather web app built with HTML, CSS, and vanilla JavaScript. It uses the OpenWeather API.
 
 ## Screenshot
-
+Dark mode
 ![WeatherNest](assets/images/WeatherNest.png)
+Light mode
+![WeatherNest](assets/images/WeatherNest2.png)
 
 ## Features
 
