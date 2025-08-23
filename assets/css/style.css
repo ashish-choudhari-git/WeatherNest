@@ -323,7 +323,11 @@ border-radius: var(--radius-circle);
   /* HEADER */
  .header .btn-primary .span{display:none;} /*Current location text will be hidden in header */
 
-.logo img{width:180px;}
+.logo img {
+  width: 180px;
+  max-width: 100%;
+  height: auto;
+}
 .logo .logo-light{ display:none; }
 .logo .logo-dark{ display:block; }
 .theme-light .logo .logo-light{ display:block; }
@@ -875,7 +879,18 @@ color: var(--on-bg-aqi-2);
   .header .icon-btn[data-search-toggler] { display: none;}
   .header .icon-btn[data-theme-toggle] { display: grid; }
 
-  .logo img{ width : 200px;}
+  .logo img {
+    width: 200px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Responsive logo for mobile */
+  @media (max-width: 600px) {
+    .logo img {
+      width: 120px;
+    }
+  }
   .header{
     position : relative;
     height: 120px;
